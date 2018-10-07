@@ -1,4 +1,14 @@
 # AirMusafir
+Problem Statement -
+● Create a flight JSON data object for your all flights available to make the search happen.
+● Take the User input from the search form and perform a search on the flight JSON data
+and display the valid search results in the results section.
+● There are two tabs for return and one way search form, the return date should be visible
+on basis of the tab selected.
+● Slider should refine the search results based on the selected price range.
+● Feel free to use any JS frameworks (like Angular or ReactJS) or Core JS to build this
+application.
+● Test your code with some unit tests.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
 
