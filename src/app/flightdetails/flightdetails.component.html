@@ -1,0 +1,43 @@
+<div *ngIf = "resultData" class="container-fluid details-scroll">
+    <div class= "row nomarginleft">
+            <h2>{{resultData[0].originCityName}}</h2>
+            <h2 class = "">></h2>
+            <h2>{{resultData[0].destCityName}}</h2>
+            <h2 *ngIf = "flightSearchedObject.retDate" class = "">></h2>
+            <h2 *ngIf = "flightSearchedObject.retDate">{{resultData[0].originCityName}}</h2>
+    </div>
+    
+    <div *ngFor = "let data of resultData"class="card border-secondary "> 
+            <div class="card-body details-card-padding">
+              <h4 *ngIf = "flightSearchedObject.retDate" class="card-title"> Rs. {{data.twoWayCost | number}}</h4>
+              <h4 *ngIf = "flightSearchedObject.retDate == null" class="card-title">Rs. {{data.oneWayCost | number}}</h4>
+              <div class="row">
+                  <div class = "col col-md-4  floatleft">
+                        <h6>{{data.sourceflightName}}</h6>
+                        <h5>{{data.originCityAbbName}} > {{data.destCityNameAbbName}}</h5>
+                        <h5>Depart: {{data.sourceDeptTime}}</h5>
+                        <h5>Arrive: {{data.destArrTime}}</h5>
+                  </div>
+                <div *ngIf = "flightSearchedObject.retDate" class="col col-md-4 floatright">
+                        <h6>{{data.deptflightName}}</h6>
+                        <h5>{{data.destCityNameAbbName}} > {{data.originCityAbbName}}</h5>
+                        <h5>Depart: {{data.destDeptTime}}</h5>
+                        <h5>Arrive: {{data.sourceArrTime}}</h5>
+                </div>
+                <div *ngIf = "flightSearchedObject.retDate == null" class="col col-md-4 floatright">
+
+                </div>
+                <div class="col col-md-4 floatright search-btn-postion">
+                    <button type="button" class="btn btn-success floatright" (click) = "onFlightSearchSubmit()">Book this flight</button>
+                </div>
+              </div> 
+            </div>
+    </div>
+</div>
+<div *ngIf = " this.flightSearchedObject && resultData === null ">
+        <h3> No result found </h3>
+        <h3> Enter origin city - Pune </h3>
+        <h3> Enter Destination city - Delhi </h3>
+        <h3> Departure Date - 01/02/2018 or 02/10/2018 or 03/10/2018</h3>
+        <h3 *ngIf = "flightSearchedObject.retDate"> Return Date - Same as depature date</h3>
+</div>

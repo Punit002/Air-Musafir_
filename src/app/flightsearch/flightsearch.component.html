@@ -1,0 +1,48 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link show" data-toggle="tab" [ngClass]="{'active': defualtTabActive}" (click)= "changeTabActive()">One way</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" [ngClass]="{'active': !defualtTabActive}" (click)= "changeTabActive()">Return</a>
+  </li>
+  </ul>
+  <div class="tab-content" class="tab-content">
+    <div *ngIf = "flightSearchFormValidation">
+        <h4 class = "required-color">Enter all the fields</h4>
+    </div>
+    <form [formGroup]="flightSearchForm">
+    <div class="form-group">
+        <label for="originCityDropdown" class="col-form-label">Enter Origin City</label>
+      <select class="form-control" id="originCityDropdown" formControlName="originCity">
+        <option *ngFor="let city of cityData;" [value]="city.id">{{city.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="destCityDropdown" class="col-form-label">Enter Destination City</label>
+        <select class="form-control" id="destCityDropdown" formControlName="destCity">
+          <option *ngFor="let city of cityData;" [value]="city.id">{{city.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label for="deptDate" class="col-form-label">Departure Date</label>
+          <kendo-datepicker class="form-control" id="deptDate" formControlName="deptDate" [format]="'dd-MMM-yyyy'" placeholder=" ">
+
+          </kendo-datepicker>
+        </div>
+        <div *ngIf = "!defualtTabActive" class="form-group">
+            <label for="retDate" class="col-form-label">Return Date</label>
+            <kendo-datepicker class="form-control" id="retDate" formControlName="retDate" [format]="'dd-MMM-yyyy'" placeholder=" ">
+
+              </kendo-datepicker>
+          </div>
+        <div class="form-group" >
+            <label for="retDate" class="col-form-label">Passengers</label>
+            <input formControlName="passengers" class="form-control" type="number" name="passenger" min="1" max="5" value="1" (keypress) = "onPassengerFieldKeyPress($event)">
+        </div>
+    </form>
+    <button type="button" class="btn btn-success search-btn-marginTop"  (click) = "onFlightSearchSubmit()">Search</button>
+    <div>
+        <label class="col-form-label">Refine flight search</label>
+        <ng5-slider [(value)]="sliderValue" [options]="sliderOptions"></ng5-slider>
+    </div>  
+  </div>
