@@ -3,7 +3,7 @@
             <h2>{{resultData[0].originCityName}}</h2>
             <h2 class = "">></h2>
             <h2>{{resultData[0].destCityName}}</h2>
-            <h2 *ngIf = "flightSearchedObject.retDate" class = "">></h2>
+            <h2 *ngIf = "flightSearchedObject.retDate">></h2>
             <h2 *ngIf = "flightSearchedObject.retDate">{{resultData[0].originCityName}}</h2>
     </div>
     <div *ngFor = "let data of resultData"class="card border-secondary "> 
